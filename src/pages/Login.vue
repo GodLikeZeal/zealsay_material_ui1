@@ -78,27 +78,27 @@ export default {
   data: () => ({
     loading: false,
     model: {
-      username: "zeal",
-      password: "123456"
+      username: 'zeal',
+      password: '123456'
     }
   }),
 
   methods: {
-    login() {
+    login () {
       this.loading = true;
-      //登录接口待调试
-      // this.$store
-      //   .dispatch("LoginByUsername", {
-      //     username: "zeal",
-      //     password: "123456"
-      //   })
-      //   .then(() => {
-      //     this.loading = false;
-      //     this.$router.push({ path: this.redirect || "/" });
-      //   })
-      //   .catch(() => {
-      //     this.loading = false;
-      //   });
+      // 登录接口待调试
+      this.$store
+        .dispatch('LoginByUsername', {
+          username: 'zeal',
+          password: '123456'
+        })
+        .then(() => {
+          this.loading = false;
+          this.$router.push({ path: this.redirect || '/' });
+        })
+        .catch(() => {
+          this.loading = false;
+        });
       setTimeout(() => {
         this.$router.push('/dashboard');
       }, 1000);

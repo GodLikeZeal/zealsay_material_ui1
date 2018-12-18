@@ -7,7 +7,7 @@ export function loginByUsername(username, password) {
     password
   }
   return request({
-    url: '/authentication/login',
+    url: '/api/v1/authentication/login',
     method: 'post',
     data: qs.stringify(data)
   })
@@ -15,14 +15,14 @@ export function loginByUsername(username, password) {
 
 export function logout() {
   return request({
-    url: '/login/logout',
+    url: '/api/v1/login/logout',
     method: 'post'
   })
 }
 
 export function getUserInfo(token) {
   return request({
-    url: '/authentication/user',
+    url: '/api/v1/authentication/user',
     method: 'get',
     params: { token }
   })
