@@ -11,6 +11,8 @@ import colors from 'vuetify/es5/util/colors';
 import Truncate from 'lodash.truncate';
 import Cookies from 'js-cookie'
 import store from './store'
+import './permission' // permission control
+
 Vue.config.productionTip = false;
 // Helpers
 // Global filters

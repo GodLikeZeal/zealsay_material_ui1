@@ -7,6 +7,12 @@ const Menu =  [
     name: 'Dashboard',
   },
   {
+    title: '用户列表',
+    group: 'apps',
+    icon: 'dashboard',
+    name: 'userList',
+  },
+  {
     title: 'Widgets',
     group: 'widgets',
     component: 'widgets',

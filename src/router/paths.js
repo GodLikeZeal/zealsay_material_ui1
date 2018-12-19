@@ -62,7 +62,7 @@ export default [
     meta: { },
     name: 'Root',
     redirect: {
-      name: 'Login'
+      name: 'Dashboard'
     }
   },
   {
@@ -73,6 +73,16 @@ export default [
       /* webpackChunkName: "routes" */
       /* webpackMode: "lazy-once" */
       `@/pages/Dashboard.vue`
+    )
+  },
+  {
+    path: '/userList',
+    meta: { breadcrumb: true },
+    name: 'userList',
+    component: () => import(
+      /* webpackChunkName: "routes" */
+      /* webpackMode: "lazy-once" */
+      `@/pages/userList/index.vue`
     )
   },
   {
