@@ -2,7 +2,7 @@
   "name": "zealsay_material_ui",
   "version": "1.0.0",
   "description": "UI for zealsay with material design",
-  "author": "zeal <zhangleifor@163.com>",
+  "author": "zeal <zhangleifor@163cnpm .com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

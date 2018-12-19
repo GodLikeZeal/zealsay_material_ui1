@@ -17,12 +17,9 @@
     >
     </v-text-field>
     <v-spacer></v-spacer>
-    <v-btn href="mailto:wangqiangshen@gmail.com">
-      Hire Me
-    </v-btn>
     <v-btn
       icon
-      href="https://github.com/tookit/vue-material-admin"
+      href="https://github.com/GodLikeZeal/zealsay_material_ui.git"
     >
       <v-icon>fa fa-github</v-icon>
     </v-btn>
@@ -97,37 +94,37 @@
   </v-toolbar>
 </template>
 <script>
-import { mapGetters } from "vuex";
-import NotificationList from "./NotificationList";
-import Util from "@/util";
+import { mapGetters } from 'vuex';
+import NotificationList from './NotificationList';
+import Util from '@/util';
 const vm=this;
 export default {
-  name: "app-toolbar",
+  name: 'app-toolbar',
   components: {
     NotificationList
   },
   data: (vm) => ({
     items: [
       {
-        icon: "account_circle",
-        href: "#",
-        title: "Profile",
+        icon: 'account_circle',
+        href: '#',
+        title: 'Profile',
         click: e => {
           console.log(e);
         }
       },
       {
-        icon: "settings",
-        href: "#",
-        title: "Settings",
+        icon: 'settings',
+        href: '#',
+        title: 'Settings',
         click: e => {
           console.log(e);
         }
       },
       {
-        icon: "fullscreen_exit",
-        href: "#",
-        title: "Logout",
+        icon: 'fullscreen_exit',
+        href: '#',
+        title: 'Logout',
         click: e => {
           vm.logout()
           // window.getApp.$emit('APP_LOGOUT');
@@ -136,20 +133,20 @@ export default {
     ]
   }),
   computed: {
-    toolbarColor() {
+    toolbarColor () {
       return this.$vuetify.options.extra.mainNav;
     },
-    ...mapGetters(["name", "avatar", "roles"])
+    ...mapGetters(['name', 'avatar', 'roles'])
   },
   methods: {
-    handleDrawerToggle() {
-      window.getApp.$emit("APP_DRAWER_TOGGLED");
+    handleDrawerToggle () {
+      window.getApp.$emit('APP_DRAWER_TOGGLED');
     },
-    handleFullScreen() {
+    handleFullScreen () {
       Util.toggleFullScreen();
     },
-    logout(){
-      this.$store.dispatch("LogOut").then(() => {
+    logout () {
+      this.$store.dispatch('LogOut').then(() => {
             location.reload(); // In order to re-instantiate the vue-router object to avoid bugs
           });
     }
