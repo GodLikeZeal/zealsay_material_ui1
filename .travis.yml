@@ -17,6 +17,9 @@ cache:
 services:
 - docker
 
+before_script:
+- sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 script:
 - cnpm i
 - npm run build
@@ -28,7 +31,6 @@ addons:
 before_install:
   - sudo apt-get update
   - sudo apt-get install sshpass
-  - sudo npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
