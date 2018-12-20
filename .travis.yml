@@ -10,9 +10,7 @@ branches:
   - master
   - stable
 
-cache:
-  directories:
-  - ".autoconf"
+cache: npm
 
 
 before_install:
