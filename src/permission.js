@@ -8,7 +8,7 @@ import { getToken } from '@/util/auth' // getToken from cookie
 NProgress.configure({ showSpinner: false })// NProgress Configuration
 
 // permission judge function
-function hasPermission(roles, permissionRoles) {
+function hasPermission (roles, permissionRoles) {
   if (roles.indexOf('ADMIN') >= 0) return true // admin permission passed directly
   if (!permissionRoles) return true
   return roles.some(role => permissionRoles.indexOf(role) >= 0)
@@ -20,10 +20,11 @@ router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
   console.log(getToken())
   if (getToken()) { // determine if there has token
-    /* has token*/
+    /* has token */
     if (to.path === '/login') {
       next({ path: '/dashboard' })
-      NProgress.done() // if current page is dashboard will not trigger	afterEach hook, so manually handle it
+      // if current page is dashboard will not trigger	afterEach hook, so manually handle it
+      NProgress.done()
     } else {
       if (store.getters.roles.length === 0) { // 判断当前用户是否已拉取完user_info信息
         store.dispatch('GetUserInfo').then(res => { // 拉取user_info
@@ -32,7 +33,7 @@ router.beforeEach((to, from, next) => {
           //   router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
           //   next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           // })
-        }).catch((err) => {
+        }).catch((error) => {
           store.dispatch('FedLogOut').then(() => {
             // Message.error(err || 'Verification failed, please login again')
             next({ path: '/' })
@@ -49,7 +50,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    /* has no token*/
+    /* has no token */
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
     } else {

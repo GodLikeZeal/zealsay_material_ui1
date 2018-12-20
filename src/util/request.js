@@ -4,9 +4,9 @@ import store from '@/store'
 import { createRequestToken } from '@/util/auth'
 
 
-const prifix = 'http://47.105.51.137:8090'
+// const prifix = 'http://47.105.51.137:8090'
 // const prifix = '/api'
-console.log(prifix)
+// console.log(prifix)
 const fetch = (options) => {
   let {
     method = 'get',
@@ -14,7 +14,7 @@ const fetch = (options) => {
     url
   } = options
 
-  url = prifix + url
+  // url = prifix + url
 
   const cloneData = cloneDeep(data)
   let headers
@@ -27,27 +27,27 @@ const fetch = (options) => {
         params: cloneData
       })
     case 'delete':
-      return axios.delete(url,headers, {
+      return axios.delete(url, headers, {
         data: cloneData
       })
     case 'post':
       return axios.post(url, cloneData, headers)
     case 'put':
-      return axios.put(url, cloneData,headers)
+      return axios.put(url, cloneData, headers)
     case 'patch':
-      return axios.patch(url, cloneData,headers)
+      return axios.patch(url, cloneData, headers)
     default:
       return axios(options)
   }
 }
 
-export default function request(options) {
+export default function request (options) {
   return fetch(options).then((response) => {
     const { statusText, status } = response
     const data = response.data
-    if(data.code=='404'||data.code=='401'){
-      //跳转404路由
-      this.$router.push({ path: `/error/${data.code}`})
+    if (data.code==='404'||data.code==='401') {
+      // 跳转404路由
+      this.$router.push({ path: `/error/${data.code}` })
       return
     }
     // if(data.code!=='200'){
@@ -74,6 +74,6 @@ export default function request(options) {
       statusCode = 600
       msg = error.message || 'Network Error'
     }
-    return Promise.reject({ success: false, statusCode, message: msg })
+    return Promise.reject(new Error({ success: false, statusCode, message: msg }))
   })
 }
