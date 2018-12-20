@@ -5,7 +5,7 @@ import { createRequestToken } from '@/util/auth'
 
 
 // const prifix = 'http://47.105.51.137:8090'
-// const prifix = '/api'
+const prifix = 'https://api.zealsay.com'
 // console.log(prifix)
 const fetch = (options) => {
   let {
@@ -14,7 +14,7 @@ const fetch = (options) => {
     url
   } = options
 
-  // url = prifix + url
+  url = prifix + url
 
   const cloneData = cloneDeep(data)
   let headers
