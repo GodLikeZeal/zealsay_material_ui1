@@ -75,33 +75,33 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       loading: false,
       model: {
-        username: "zeal",
-        password: "123456"
+        username: 'zeal',
+        password: '123456'
       },
       redirect: undefined
     };
   },
   watch: {
     $route: {
-      handler: function(route) {
+      handler: function (route) {
         this.redirect = route.query && route.query.redirect;
       },
       immediate: true
     }
   },
   methods: {
-    login() {
+    login () {
       this.loading = true;
       // 登录接口待调试
       this.$store
-        .dispatch("LoginByUsername", this.model)
+        .dispatch('LoginByUsername', this.model)
         .then(() => {
           this.loading = false;
-          this.$router.push({ path: this.redirect || "/dashboard" });
+          this.$router.push({ path: this.redirect || '/dashboard' });
         })
         .catch(() => {
           this.loading = false;
