@@ -31,7 +31,7 @@ router.beforeEach((to, from, next) => {
           const roles = res.data.roles // note: roles must be a array! such as: ['editor','develop']
           // store.dispatch('GenerateRoutes', { roles }).then(() => { // 根据roles权限生成可访问的路由表
           //   router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-          //   next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
+            next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
           // })
         }).catch((error) => {
           store.dispatch('FedLogOut').then(() => {
@@ -43,6 +43,7 @@ router.beforeEach((to, from, next) => {
         // 没有动态改变权限的需求可直接next() 删除下方权限判断 ↓
         if (hasPermission(store.getters.roles, to.meta.roles)) {
           next()
+          // NProgress.done()
         } else {
           next({ path: '/401', replace: true, query: { noGoBack: true }})
         }
@@ -50,6 +51,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
+    console.log(to.path)
     /* has no token */
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
