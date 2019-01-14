@@ -16,7 +16,6 @@ cache: npm
 before_install:
   - sudo apt-get update
   - sudo apt-get install sshpass
-  - npm i -g npm@version-number
 
 install:
 - npm install -g cnpm --registry=https://registry.npm.taobao.org
